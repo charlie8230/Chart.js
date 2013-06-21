@@ -740,7 +740,7 @@ window.Chart = function(context){
 				//draw the label at y=x*sin(angle/2)
 				//ctx.fillText("test",)
 				
-				console.log("will print x at:",width/2+height/2*Math.sin(segmentAngle/2));
+				console.log("will print x at:",width/2+height/2*Math.cos(segmentAngle/2));
 				console.log("will print y at:",height/2+width/2*Math.sin(segmentAngle/2));
 				
 				if(config.segmentShowStroke){
