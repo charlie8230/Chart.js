@@ -1,4 +1,4 @@
-/*!
+git/*!
  * Chart.js
  * http://chartjs.org/
  *
@@ -722,14 +722,26 @@ window.Chart = function(context){
 					rotateAnimation = animationDecimal;
 				}
 			}
+			
+			//animation decimal log
+			console.log(animationDecimal);
+			
 			for (var i=0; i<data.length; i++){
 				var segmentAngle = rotateAnimation * ((data[i].value/segmentTotal) * (Math.PI*2));
 				ctx.beginPath();
+				//center at w/2 h /2 
 				ctx.arc(width/2,height/2,scaleAnimation * pieRadius,cumulativeAngle,cumulativeAngle + segmentAngle);
 				ctx.lineTo(width/2,height/2);
 				ctx.closePath();
 				ctx.fillStyle = data[i].color;
 				ctx.fill();
+				
+				//draw labels here
+				//draw the label at y=x*sin(angle/2)
+				//ctx.fillText("test",)
+				
+				console.log("will print x at:",width/2+height/2*Math.sin(segmentAngle/2));
+				console.log("will print y at:",height/2+width/2*Math.sin(segmentAngle/2));
 				
 				if(config.segmentShowStroke){
 					ctx.lineWidth = config.segmentStrokeWidth;
