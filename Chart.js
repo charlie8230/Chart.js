@@ -6,6 +6,9 @@
  * Released under the MIT license
  * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
  */
+ 
+ /* Add labels to pie charts */
+  /* */
 
 //Define the global Chart Variable as a class.
 window.Chart = function(context){
@@ -160,7 +163,9 @@ window.Chart = function(context){
 		context.canvas.width = width * window.devicePixelRatio;
 		context.scale(window.devicePixelRatio, window.devicePixelRatio);
 	}
-
+	
+	//Chart configs
+	
 	this.PolarArea = function(data,options){
 	
 		chart.PolarArea.defaults = {
