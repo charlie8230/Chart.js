@@ -1,4 +1,4 @@
-git/*!
+/*!
  * Chart.js
  * http://chartjs.org/
  *
@@ -705,8 +705,19 @@ window.Chart = function(context){
 		
 		for (var i=0; i<data.length; i++){
 			segmentTotal += data[i].value;
+			
+
 		}
 		
+				//draw labels here
+				//draw the label at y=x*sin(angle/2)
+				//ctx.fillText("test",)
+				//console.log("Value: "+ segmentTotal);
+				var tAngle = (data[0].value/segmentTotal)*-2*Math.PI;
+				//console.log("Angle: "+ (data[0].value/segmentTotal)*2*Math.PI)
+				console.log("will print x at:",width/2+height/2*Math.cos(tAngle/2));
+				console.log("will print y at:",height/2+width/2*Math.sin(tAngle/2));
+				ctx.fillText("test",0,0);
 		
 		animationLoop(config,null,drawPieSegments,ctx);
 				
@@ -728,6 +739,7 @@ window.Chart = function(context){
 			
 			for (var i=0; i<data.length; i++){
 				var segmentAngle = rotateAnimation * ((data[i].value/segmentTotal) * (Math.PI*2));
+				console.log("Rotate Animation: " + rotateAnimation);
 				ctx.beginPath();
 				//center at w/2 h /2 
 				ctx.arc(width/2,height/2,scaleAnimation * pieRadius,cumulativeAngle,cumulativeAngle + segmentAngle);
@@ -736,12 +748,7 @@ window.Chart = function(context){
 				ctx.fillStyle = data[i].color;
 				ctx.fill();
 				
-				//draw labels here
-				//draw the label at y=x*sin(angle/2)
-				//ctx.fillText("test",)
-				
-				console.log("will print x at:",width/2+height/2*Math.cos(segmentAngle/2));
-				console.log("will print y at:",height/2+width/2*Math.sin(segmentAngle/2));
+
 				
 				if(config.segmentShowStroke){
 					ctx.lineWidth = config.segmentStrokeWidth;
